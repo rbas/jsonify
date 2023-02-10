@@ -5,3 +5,7 @@ test:
 
 release:
 	cargo build --release
+
+install: release
+	mkdir -p ~/bin
+	cp ./target/release/jsonify ~/bin/
