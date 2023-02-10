@@ -2,8 +2,7 @@ Jsonify
 ======
 Formats and colors JSON input for easier reading
 
-Jsonify is a command line tool that takes JSON data as input and returns a formatted and color-coded structure. 
-It is designed to make reading and analyzing JSON data easier and more intuitive by highlighting the different elements in a clear and distinct manner. With jsonify, you can easily spot the structure of complex JSON data and quickly identify any errors or issues. This tool is ideal for developers and data analysts who need to work with JSON data on a regular basis.
+Jsonify is a fast and efficient command line tool for formatting and coloring JSON data. It takes JSON input and returns a clear, color-coded structure for easy reading. Ideal for developers and data analysts, jsonify is both blazingly fast and memory efficient.
 
 Usage
 -----
