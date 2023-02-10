@@ -2,8 +2,13 @@
 name = "jsonify"
 version = "0.1.1"
 edition = "2021"
+description = "Formats and colors JSON input for easier reading"
+authors = ["Martin Voldrich"]
+exclude =  ["test.json"]
+readme = "README.md"
 
 [dependencies]
+clap = { version = "4.1.4", features = ["derive"] }
 colored = "2.0.0"
 colored_json = "3.0.1"
 serde_json = "1.0.93"
