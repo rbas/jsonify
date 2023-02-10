@@ -4,7 +4,7 @@ version = "0.1.1"
 edition = "2021"
 description = "Formats and colors JSON input for easier reading"
 authors = ["Martin Voldrich"]
-exclude =  ["test.json"]
+exclude =  ["test.json", "assets/*"]
 readme = "README.md"
 
 [dependencies]
