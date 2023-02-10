@@ -1,8 +1,9 @@
 [package]
 name = "jsonify"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 [dependencies]
 colored = "2.0.0"
+colored_json = "3.0.1"
 serde_json = "1.0.93"

@@ -4,16 +4,7 @@ use std::{
 };
 
 use colored::Colorize;
-use serde_json::{to_string_pretty, Value};
-
-fn parse_json(buffer: &String) -> Result<String, serde_json::Error> {
-    let parsed_json: Result<Value, serde_json::Error> = serde_json::from_str(&buffer);
-
-    match parsed_json {
-        Ok(parsed_json) => to_string_pretty(&parsed_json),
-        Err(e) => Err(e),
-    }
-}
+use colored_json::{ColorMode, ToColoredJson};
 
 fn main() -> io::Result<()> {
     let mut buffer = String::new();
@@ -22,7 +13,7 @@ fn main() -> io::Result<()> {
     // TODO: Handle invalid buffer
     stdin.read_to_string(&mut buffer)?;
 
-    let parsed_string = parse_json(&buffer);
+    let parsed_string = buffer.to_colored_json(ColorMode::On);
     match parsed_string {
         Ok(parsed_string) => {
             println!("{}", parsed_string);
