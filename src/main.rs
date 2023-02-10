@@ -1,16 +1,18 @@
-use std::io::{self, Read};
+use std::{
+    io::{self, Read},
+    process,
+};
 
-use serde_json::{to_string_pretty, Error, Value};
+use colored::Colorize;
+use serde_json::{to_string_pretty, Value};
 
-fn print_parsed_json(json_data: &Value) {
-    // TODO: Hande parse errors
-    let output = to_string_pretty(&json_data);
+fn parse_json(buffer: &String) -> Result<String, serde_json::Error> {
+    let parsed_json: Result<Value, serde_json::Error> = serde_json::from_str(&buffer);
 
-    println!("{}", output.unwrap());
-}
-
-fn print_parse_error_message(error: Error) {
-    eprintln!("{:?}", error)
+    match parsed_json {
+        Ok(parsed_json) => to_string_pretty(&parsed_json),
+        Err(e) => Err(e),
+    }
 }
 
 fn main() -> io::Result<()> {
@@ -20,10 +22,25 @@ fn main() -> io::Result<()> {
     // TODO: Handle invalid buffer
     stdin.read_to_string(&mut buffer)?;
 
-    let parsed_json: Result<_, serde_json::Error> = serde_json::from_str(&buffer);
-    match parsed_json {
-        Ok(parsed_json) => print_parsed_json(&parsed_json),
-        Err(e) => print_parse_error_message(e),
+    let parsed_string = parse_json(&buffer);
+    match parsed_string {
+        Ok(parsed_string) => {
+            println!("{}", parsed_string);
+        }
+        Err(e) => {
+            eprintln!("-------");
+            eprintln!(
+                "[{}] {}",
+                "Err".red(),
+                "Following error occured during parsing expected json data".bold()
+            );
+            eprintln!("[{}]\t{:?}", "Err".red(), e);
+            eprintln!("[{}] {}", "Err".red(), "please check following data".bold());
+            eprintln!("[{}]\n{:?}\n", "Err".red(), buffer);
+            eprintln!("-------");
+
+            process::exit(65);
+        }
     }
 
     Ok(())
