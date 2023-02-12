@@ -6,7 +6,8 @@ test:
 	echo "Blah" |RUST_BACKTRACE=1 ./target/debug/jsonify 
 
 release:
-	cargo build --release
+	cargo build --target=aarch64-apple-darwin --release
+	cargo build --target=x86_64-apple-darwin --release
 
 install: release
 	mkdir -p ~/bin
