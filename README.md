@@ -1,4 +1,5 @@
 # Jsonify
+[![Rust](https://github.com/rbas/jsonify/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/rbas/jsonify/actions/workflows/rust.yml)
 
 Jsonify is a fast and efficient command line tool for formatting and coloring JSON data. It takes JSON input and returns a clear, color-coded structure for easy reading. Ideal for developers and data analysts, jsonify is both blazingly fast and memory efficient.
 
