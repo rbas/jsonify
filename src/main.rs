@@ -22,7 +22,7 @@ fn main() -> io::Result<()> {
     let args = Args::parse();
 
     let mut color_mode = ColorMode::On;
-    if args.no_color == true {
+    if args.no_color {
         color_mode = ColorMode::Off;
     }
 
